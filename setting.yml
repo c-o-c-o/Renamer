@@ -1,0 +1,23 @@
+Result:
+  Name: "{@name}_{@body}" #リネームパターンから発話者と発言内容を検出してファイル名にします。拡張子名は要りません
+  #Encode: utf-8 #書き換え後テキストのエンコードを指定することも出来ます。デフォルトでshift-jisです
+Patterns:
+  - Target: Text #VOICEROID2用のリネームパターンです
+    Pattern: ^(?P<name>.*?)＞(?P<body>.*?)$
+  - Target: Name #VOICEBOX用のリネームパターンです
+    Pattern: ^[0-9]+_(?P<name>.*?)_(?P<body>.*?)$
+  - Target: Text #不明な場合のリネームパターンです
+    Pattern: ^(?P<body>.*?)$
+    #Encode: utf-8 #読み込みテキストのエンコードを指定する事も出来ます。デフォルトでshift-jisです
+Delete-Prefix: #発言内容の頭文字を削除します
+  - ”
+  - ＃
+  - ｜
+Replace-Name: #発話者名を置換します
+  結月ゆかり: 結月ゆ
+  紲星あかり: 紲星あ #かわいい
+  葵: 琴葉葵
+  茜: 琴葉茜
+  ずんだもん: ずんだ
+  四国めたん: めたん
+  "": ？？？
