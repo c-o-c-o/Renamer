@@ -63,7 +63,7 @@ func ReplaceResult(rsltname string, tinfo *analyze.TalkInfo) string {
 	}
 
 	for k, v := range invrep {
-		rsltname = strings.ReplaceAll(rsltname, "{@"+k+"}", v)
+		rsltname = strings.ReplaceAll(rsltname, k, v)
 	}
 
 	return rsltname
