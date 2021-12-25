@@ -4,8 +4,8 @@ Result:
 Patterns:
   - Target: Text #VOICEROID2用のリネームパターンです
     Pattern: ^(?P<name>.*?)＞(?P<body>.*?)$
-  - Target: Name #VOICEBOX用のリネームパターンです
-    Pattern: ^[0-9]+_(?P<name>.*?)_(?P<body>.*?)$
+  - Target: Name:Text #VOICEBOX用のリネームパターンです
+    Pattern: ^[0-9]*_(?P<name>.*?)_.*?:(?P<body>.*?)$
   - Target: Text #不明な場合のリネームパターンです
     Pattern: ^(?P<body>.*?)$
     #Encode: utf-8 #読み込みテキストのエンコードを指定する事も出来ます。デフォルトでshift-jisです

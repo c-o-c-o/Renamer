@@ -10,7 +10,7 @@
             "request": "launch",
             "mode": "auto",
             "program": "main.go",
-            "args": ["-t", "C:/Users/coco/Documents/source/go/obfpl/src/t-0.txt"]
+            "args": ["-t", "${workspaceFolder}/test.txt"]
         }
     ]
 }

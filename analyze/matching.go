@@ -28,7 +28,7 @@ func GetTalkInfo(tgts *Targets, ptns []data.Pattern) (*TalkInfo, error) {
 			}
 		}
 
-		ttext, err := GetTarget(ptn.Tgt, tgts.FileName, string(fbodyb))
+		ttext, err := GetTargetValue(ptn.Tgt, tgts.FileName, string(fbodyb))
 		if err != nil {
 			return nil, err
 		}
@@ -80,16 +80,22 @@ func SubmatchMap(str string, ptn string) (map[string]string, error) {
 	return rslt, nil
 }
 
-func GetTarget(sel string, name string, text string) (string, error) {
+func GetTargetValue(tgt string, name string, text string) (string, error) {
+	tgts := strings.Split(tgt, ":")
+	r := make([]string, 0, len(tgts))
 	t := map[string]string{
 		"Name": name,
 		"Text": text,
 	}
 
-	v, exist := t[sel]
-	if !exist {
-		return "", errors.New("the target was not found")
+	for _, v := range tgts {
+		s, exist := t[v]
+		if !exist {
+			return "", errors.New("the target was not found")
+		}
+
+		r = append(r, s)
 	}
 
-	return v, nil
+	return strings.Join(r, ":"), nil
 }
