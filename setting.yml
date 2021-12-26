@@ -4,7 +4,7 @@ Result:
 Patterns:
   - Target: Text #VOICEROID2用のリネームパターンです
     Pattern: ^(?P<name>.*?)＞(?P<body>.*?)$
-  - Target: Name:Text #VOICEBOX用のリネームパターンです
+  - Target: Name:Text #Cevio & VOICEBOX用のリネームパターンです
     Pattern: ^[0-9]*_(?P<name>.*?)_.*?:(?P<body>.*?)$
   - Target: Text #不明な場合のリネームパターンです
     Pattern: ^(?P<body>.*?)$
@@ -18,6 +18,8 @@ Replace-Name: #発話者名を置換します
   紲星あかり: 紲星あ #かわいい
   葵: 琴葉葵
   茜: 琴葉茜
+  さとうささら: ささら
+  すずきつづみ: つづみ
   ずんだもん: ずんだ
   四国めたん: めたん
   "": ？？？
