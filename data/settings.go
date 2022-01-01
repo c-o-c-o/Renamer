@@ -7,9 +7,10 @@ type Settings struct {
 		Name string `yaml:"Name"`
 		Enc  string `yaml:"Encode"`
 	} `yaml:"Result"`
-	Ptns     []Pattern     `yaml:"Patterns"`
-	DelPrefs []string      `yaml:"Delete-Prefix"`
-	RepName  yaml.MapSlice `yaml:"Replace-Name"`
+	Ptns      []Pattern     `yaml:"Patterns"`
+	DelPrefix []string      `yaml:"Delete-Prefix"`
+	DelSuffix []string      `yaml:"Delete-Suffix"`
+	RepName   yaml.MapSlice `yaml:"Replace-Name"`
 }
 
 type Pattern struct {

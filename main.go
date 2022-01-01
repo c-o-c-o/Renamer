@@ -69,7 +69,7 @@ func run(c *cli.Context) error {
 	}
 
 	//ファイル内容修正
-	err = output.FixTextFile(textpath, edit.DeletePrefix(tinfo.Body, stg.DelPrefs), stg.Rslt.Enc)
+	err = output.FixTextFile(textpath, edit.FixBody(tinfo.Body, stg.DelPrefix, stg.DelSuffix), stg.Rslt.Enc)
 	if err != nil {
 		return err
 	}

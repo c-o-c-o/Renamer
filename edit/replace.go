@@ -36,15 +36,6 @@ func ReplaceTalkInfo(tinfo analyze.TalkInfo, repname yaml.MapSlice) (*analyze.Ta
 	return &tinfo, nil
 }
 
-func DeletePrefix(body string, delprefs []string) string {
-	for _, dp := range delprefs {
-		if len(dp) < len(body) && strings.HasPrefix(body, dp) {
-			return body[len(dp):]
-		}
-	}
-	return body
-}
-
 func ReplaceResult(rsltname string, tinfo *analyze.TalkInfo) string {
 	invrep := map[string]string{
 		"\\": "￥",
