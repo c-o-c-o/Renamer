@@ -2,18 +2,18 @@ package edit
 
 import "strings"
 
-func FixBody(body string, delprefix []string, delsuffix []string) string {
+func (e *Editor) FixBody(body string) string {
 	bdyidx := 0
 	bdylen := len(body)
 
-	for _, dp := range delprefix {
+	for _, dp := range e.Settings.DelPrefix {
 		if strings.HasPrefix(body, dp) {
 			bdyidx = len(dp)
 			break
 		}
 	}
 
-	for _, ds := range delsuffix {
+	for _, ds := range e.Settings.DelSuffix {
 		if strings.HasSuffix(body, ds) {
 			bdylen -= len(ds)
 			break

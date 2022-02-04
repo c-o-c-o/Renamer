@@ -62,28 +62,30 @@ func run(c *cli.Context) error {
 		return err
 	}
 
+	editor := edit.Editor{
+		Settings: *stg,
+	}
+
 	//置換
-	tinfo, err = edit.ReplaceTalkInfo(*tinfo, stg.RepName)
+	tinfo, err = editor.ReplaceName(*tinfo)
 	if err != nil {
 		return err
 	}
 
 	//ファイル内容修正
-	err = output.FixTextFile(textpath, edit.FixBody(tinfo.Body, stg.DelPrefix, stg.DelSuffix), stg.Rslt.Enc)
+	err = output.FixTextFile(textpath, editor.FixBody(tinfo.Body), stg.Rslt.Enc)
 	if err != nil {
 		return err
 	}
 
 	//ファイルリネーム
-	args := c.Args().Slice()
-	rnpaths := make([]string, len(args)+1)
-	copy(rnpaths, args)
+	newname, err := editor.ReplaceResult(tinfo)
+	if err != nil {
+		return err
+	}
 
-	rnpaths[len(rnpaths)-1] = textpath
-
-	err = output.Renames(
-		edit.ReplaceResult(stg.Rslt.Name, tinfo),
-		rnpaths)
+	rnpaths := append(c.Args().Slice(), textpath)
+	err = output.Renames(newname, rnpaths)
 
 	if err != nil {
 		return err
