@@ -83,6 +83,7 @@ func run(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
+	newname = editor.GetLimitedFileName(newname)
 
 	rnpaths := append(c.Args().Slice(), textpath)
 	err = output.Renames(newname, rnpaths)

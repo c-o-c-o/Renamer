@@ -4,8 +4,9 @@ import "gopkg.in/yaml.v2"
 
 type Settings struct {
 	Rslt struct {
-		Name string `yaml:"Name"`
-		Enc  string `yaml:"Encode"`
+		Name   string `yaml:"Name"`
+		Enc    string `yaml:"Encode"`
+		MaxLen *int   `yaml:"MaxLength"`
 	} `yaml:"Result"`
 	Ptns        []Pattern     `yaml:"Patterns"`
 	DelPrefix   []string      `yaml:"Delete-Prefix"`
