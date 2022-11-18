@@ -3,6 +3,11 @@ package edit
 import "strings"
 
 func (e *Editor) FixBody(body string) string {
+
+	return e.delPreSuf(body)
+}
+
+func (e *Editor) delPreSuf(body string) string {
 	bdyidx := 0
 	bdylen := len(body)
 
