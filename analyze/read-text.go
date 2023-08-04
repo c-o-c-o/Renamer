@@ -6,6 +6,7 @@ import (
 )
 
 type Targets struct {
+	FileDir  string
 	FileName string
 	FileBody []byte
 }
@@ -17,6 +18,7 @@ func GetPtnTgts(textpath string) (*Targets, error) {
 	}
 
 	return &Targets{
+		FileDir:  filepath.ToSlash(filepath.Dir(textpath)),
 		FileName: withoutExt(textpath),
 		FileBody: b,
 	}, nil

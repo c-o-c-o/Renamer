@@ -1,12 +1,20 @@
 Result:
   Name: "{@name}_{@body}" #リネームパターンから発話者と発言内容を検出してファイル名にします。拡張子名は要りません
-  #Encode: utf-8 #書き換え後テキストのエンコードを指定することも出来ます。デフォルトでshift-jisです
+  # Encode: utf-8 #書き換え後テキストのエンコードを指定することも出来ます。デフォルトでshift-jisです
   MaxLength: 15 #ファイル名の最大文字数、この値より文字数が多い場合は...に置き換えられます。制限したくない場合はこの行を削除します
 Patterns:
+  # Targetに利用できる値は Dir, Name, Text です
+  # 　それぞれ以下の様に置き換えられます
+  # 　Dir 読み込んだファイルのディレクトリ
+  # 　Name ファイル名
+  # 　Text ファイルの内容（Encodeで指定した形で読み込んだ結果）
+  - Target: Dir::Text #フォルダで名で指定するリネームパターンです
+    Pattern: ^.*?/@(?P<name>[^/]*?)::(?P<body>.*?)$
+    Encode: utf-8
   - Target: Text #VOICEROID2用のリネームパターンです
     Pattern: ^(?P<name>.*?)＞(?P<body>.*?)$
-  - Target: Name:Text #Cevio & VOICEBOX用のリネームパターンです
-    Pattern: ^[0-9]*_(?P<name>.*?)_.*?:(?P<body>.*?)$
+  - Target: Name::Text #Cevio & VOICEBOX用のリネームパターンです
+    Pattern: ^[0-9]*_(?P<name>.*?)_.*?::(?P<body>.*?)$
   - Target: Text #不明な場合のリネームパターンです
     Pattern: ^(?P<body>.*?)$
     #Encode: utf-8 #読み込みテキストのエンコードを指定する事も出来ます。デフォルトでshift-jisです

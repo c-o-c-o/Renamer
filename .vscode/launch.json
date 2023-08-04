@@ -10,7 +10,10 @@
             "request": "launch",
             "mode": "auto",
             "program": ".",
-            "args": ["-t", "${workspaceFolder}/test.txt"]
+            "args": [
+                "-t",
+                "${workspaceFolder}/t/0_一年ぶりぐらいかな？.txt"
+            ]
         }
     ]
 }
