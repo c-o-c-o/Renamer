@@ -5,7 +5,6 @@ import "gopkg.in/yaml.v2"
 type Settings struct {
 	Rslt struct {
 		Name   string `yaml:"Name"`
-		Enc    string `yaml:"Encode"`
 		MaxLen *int   `yaml:"MaxLength"`
 	} `yaml:"Result"`
 	Ptns        []Pattern     `yaml:"Patterns"`
@@ -18,5 +17,4 @@ type Settings struct {
 type Pattern struct {
 	Tgt string `yaml:"Target"`
 	Ptn string `yaml:"Pattern"`
-	Enc string `yaml:"Encode"`
 }

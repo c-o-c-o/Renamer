@@ -73,7 +73,7 @@ func run(c *cli.Context) error {
 	}
 
 	//ファイル内容修正
-	err = output.FixTextFile(textpath, editor.FixBody(tinfo.Body), stg.Rslt.Enc)
+	err = output.FixTextFile(textpath, editor.FixBody(tinfo.Body))
 	if err != nil {
 		return err
 	}

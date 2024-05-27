@@ -15,20 +15,7 @@ type TalkInfo struct {
 
 func GetTalkInfo(tgts *Targets, ptns []data.Pattern) (*TalkInfo, error) {
 	for _, ptn := range ptns {
-		conv, err := GetConverter(ptn.Enc)
-		if err != nil {
-			return nil, err
-		}
-
-		fbodyb := tgts.FileBody
-		if conv != nil {
-			fbodyb, err = Convert(tgts.FileBody, conv.NewDecoder())
-			if err != nil {
-				return nil, err
-			}
-		}
-
-		ttext, err := GetTargetValue(ptn.Tgt, tgts.FileDir, tgts.FileName, string(fbodyb))
+		ttext, err := GetTargetValue(ptn.Tgt, tgts.FileDir, tgts.FileName, string(tgts.FileBody))
 		if err != nil {
 			return nil, err
 		}
